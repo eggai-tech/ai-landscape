@@ -33,19 +33,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  // Commenting out this section as it's now handled in the inline script
+  // This prevents duplicate event listeners from being attached
+  /*
   // Collapsible sections
-  const layerHeaders = document.querySelectorAll('.layer-header-clickable');
+  const layerHeaders = document.querySelectorAll('.layer-header');
   
   layerHeaders.forEach(header => {
-    header.addEventListener('click', () => {
+    header.addEventListener('click', function() {
       // Toggle active class on the header
-      header.classList.toggle('active');
+      this.classList.toggle('active');
       
-      // Toggle collapsed class on the content
-      const content = header.closest('.layer-header').nextElementSibling;
-      content.classList.toggle('collapsed');
+      // Get the content element and collapse icon
+      const content = this.nextElementSibling;
+      const icon = this.querySelector('.collapse-icon');
+      
+      // Toggle visibility
+      if (content.style.display === 'none' || content.classList.contains('collapsed')) {
+        content.style.display = 'block';
+        content.classList.remove('collapsed');
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.style.display = 'none';
+        content.classList.add('collapsed');
+        if (icon) icon.style.transform = 'rotate(-90deg)';
+      }
     });
   });
+  */
   
   // Tooltip functionality
   const tooltip = document.getElementById('tooltip');

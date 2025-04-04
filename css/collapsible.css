@@ -33,7 +33,7 @@
 .category-content {
   transition: max-height 0.3s ease-out;
   overflow: hidden;
-  padding: 0 15px;
+  padding: 0 15px 15px 15px;
 }
 
 .category-content.collapsed {

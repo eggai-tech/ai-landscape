@@ -124,11 +124,29 @@ main {
   box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
 }
 
-.search-box {
+.search-box-container {
   margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   width: 100%;
+}
+
+.search-box {
+  flex: 1;
   max-width: 500px;
   position: relative;
+}
+
+.count-indicator {
+  font-size: 0.875rem;
+  color: #6B7280;
+  white-space: nowrap;
+}
+
+.count-indicator span {
+  font-weight: 600;
+  color: #374151;
 }
 
 .search-input {
@@ -212,16 +230,11 @@ hr {
 
 .layer-content {
   padding: 1.5rem;
-  overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: max-height;
+  box-sizing: border-box;
 }
 
 .layer-content.collapsed {
-  max-height: 0 !important;
-  padding-top: 0;
-  padding-bottom: 0;
-  opacity: 0;
+  display: none;
 }
 
 /* Category tech grid */
@@ -229,6 +242,7 @@ hr {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 1.5rem;
+  box-sizing: border-box;
 }
 
 /* Tech card styles */

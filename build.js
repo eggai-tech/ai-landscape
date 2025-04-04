@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Read the landscape data
-const landscapeData = JSON.parse(fs.readFileSync(path.join(__dirname, 'landscape-data.json'), 'utf8'));
+const landscapeData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/landscape-data.json'), 'utf8'));
 
 // Function to generate a simple SVG logo based on color
 function generateLogoSvg(color) {
@@ -73,7 +73,7 @@ function generateTechCards() {
     if (!category || category.technologies.length === 0) return;
     
     html += `<div class="layer-container" data-layer="${catId}">\n`;
-    html += `  <div class="layer-header layer-header-clickable" style="background-color: ${category.color};">\n`;
+    html += `  <div class="layer-header" style="background-color: ${category.color};">\n`;
     html += '    <div class="layer-header-top">\n';
     html += `      <h2 class="layer-title">${category.name}</h2>\n`;
     html += '      <span class="collapse-icon">▼</span>\n';
@@ -161,7 +161,8 @@ function generateHTML() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${landscapeData.title}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/collapsible.css">
 </head>
 <body>
   <header>
@@ -169,7 +170,7 @@ function generateHTML() {
       <div class="logo">
         <h1>${landscapeData.title}</h1>
       </div>
-      <a href="https://github.com/your-org/ai-landscape" target="_blank" rel="noopener noreferrer">
+      <a href="https://eggai-tech.github.io/ai-landscape" target="_blank" rel="noopener noreferrer">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 0C5.374 0 0 5.373 0 12C0 17.302 3.438 21.8 8.207 23.387C8.806 23.498 9 23.126 9 22.81V20.576C5.662 21.302 4.967 19.16 4.967 19.16C4.421 17.773 3.634 17.404 3.634 17.404C2.545 16.659 3.717 16.675 3.717 16.675C4.922 16.759 5.556 17.912 5.556 17.912C6.626 19.746 8.363 19.216 9.048 18.909C9.155 18.134 9.466 17.604 9.81 17.305C7.145 17 4.343 15.971 4.343 11.374C4.343 10.063 4.812 8.993 5.579 8.153C5.455 7.85 5.044 6.629 5.696 4.977C5.696 4.977 6.704 4.655 8.997 6.207C9.954 5.941 10.98 5.808 12 5.803C13.02 5.808 14.047 5.941 15.006 6.207C17.297 4.655 18.303 4.977 18.303 4.977C18.956 6.63 18.545 7.851 18.421 8.153C19.191 8.993 19.656 10.064 19.656 11.374C19.656 15.983 16.849 16.998 14.177 17.295C14.607 17.667 15 18.397 15 19.517V22.81C15 23.129 15.192 23.504 15.801 23.386C20.566 21.797 24 17.3 24 12C24 5.373 18.627 0 12 0Z" fill="#333"/>
         </svg>
@@ -185,8 +186,13 @@ function generateHTML() {
       <div class="filter-container">
         ${generateCategoryButtons()}
 
-        <div class="search-box">
-          <input type="text" class="search-input" placeholder="Search technologies...">
+        <div class="search-box-container">
+          <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search technologies...">
+          </div>
+          <div class="count-indicator">
+            <span id="tech-count">${landscapeData.technologies.length}</span> technologies
+          </div>
         </div>
       </div>
       
@@ -202,57 +208,50 @@ function generateHTML() {
         © <span id="current-year"></span> EggAI Technologies. An open reference architecture.
       </div>
       <div class="links">
-        <a href="https://github.com/your-org/ai-landscape" target="_blank" rel="noopener noreferrer">
+        <a href="https://eggai-tech.github.io/ai-landscape" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
-        <a href="https://github.com/your-org/ai-landscape" target="_blank" rel="noopener noreferrer">
+        <a href="https://eggai-tech.github.io/ai-landscape" target="_blank" rel="noopener noreferrer">
           Documentation
         </a>
       </div>
     </div>
   </footer>
 
+  <script src="js/script.js"></script>
+  <script src="js/collapsible.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Set current year in the footer
       document.getElementById('current-year').textContent = new Date().getFullYear();
-      
-      // Set up collapsible layer headers
+
+      // Handle the collapsible sections
       const layerHeaders = document.querySelectorAll('.layer-header');
       
+      // Handle click on headers
       layerHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-          const layerContent = header.nextElementSibling;
-          const collapseIcon = header.querySelector('.collapse-icon');
+        header.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+          const icon = this.querySelector('.collapse-icon');
           
-          if (layerContent.classList.contains('collapsed')) {
-            // Expand - set max-height before removing collapsed class (for smoother animation)
-            const expandedHeight = layerContent.scrollHeight;
-            requestAnimationFrame(() => {
-              layerContent.style.maxHeight = expandedHeight + 'px';
-              layerContent.classList.remove('collapsed');
-              collapseIcon.style.transform = 'rotate(0deg)';
-            });
+          // Toggle visibility
+          if (content.style.display === 'none' || content.classList.contains('collapsed')) {
+            content.style.display = 'block';
+            content.classList.remove('collapsed');
+            if (icon) icon.style.transform = 'rotate(0deg)';
           } else {
-            // Collapse
-            layerContent.style.maxHeight = layerContent.scrollHeight + 'px';
-            requestAnimationFrame(() => {
-              layerContent.classList.add('collapsed');
-              collapseIcon.style.transform = 'rotate(-90deg)';
-            });
+            content.style.display = 'none';
+            content.classList.add('collapsed');
+            if (icon) icon.style.transform = 'rotate(-90deg)';
           }
         });
       });
       
       // Initialize all layers as expanded
-      setTimeout(() => {
-        document.querySelectorAll('.layer-content').forEach(content => {
-          // Start with all layers expanded
-          const height = content.scrollHeight;
-          content.style.maxHeight = height + 'px';
-          content.classList.remove('collapsed');
-        });
-      }, 100);
+      document.querySelectorAll('.layer-content').forEach(content => {
+        content.classList.remove('collapsed');
+        content.style.display = 'block';
+      });
       
       // Category filtering
       const tagFilters = document.querySelectorAll('.tag-filter');
@@ -273,6 +272,8 @@ function generateHTML() {
           card.style.display = 'none';
         });
         
+        let visibleCount = 0;
+        
         if (category === 'all') {
           // Show all layers and cards for "All Categories"
           layerContainers.forEach(container => {
@@ -281,6 +282,7 @@ function generateHTML() {
           
           techCards.forEach(card => {
             card.style.display = 'flex';
+            visibleCount++;
           });
         } else {
           // Only show the layer matching the category
@@ -294,10 +296,14 @@ function generateHTML() {
               const cardCategories = card.getAttribute('data-categories').split(' ');
               if (cardCategories.includes(category)) {
                 card.style.display = 'flex';
+                visibleCount++;
               }
             });
           }
         }
+        
+        // Update the count indicator
+        document.getElementById('tech-count').textContent = visibleCount;
       }
       
       // Add click handlers to main filter buttons
@@ -358,6 +364,8 @@ function generateHTML() {
           container.style.display = 'none';
         });
         
+        let visibleCount = 0;
+        
         techCards.forEach(card => {
           const techName = card.querySelector('.tech-name').textContent.toLowerCase();
           const techDescription = card.querySelector('.tech-description').textContent.toLowerCase();
@@ -368,6 +376,7 @@ function generateHTML() {
               techDescription.includes(searchTerm) || 
               techTags.some(tag => tag.includes(searchTerm))) {
             card.style.display = 'flex';
+            visibleCount++;
             // Show the layer container for this card
             const layerContainer = card.closest('.layer-container');
             if (layerContainer) {
@@ -375,6 +384,9 @@ function generateHTML() {
             }
           }
         });
+        
+        // Update the count indicator
+        document.getElementById('tech-count').textContent = visibleCount;
       });
     });
   </script>
