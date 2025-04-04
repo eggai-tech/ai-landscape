@@ -294,9 +294,6 @@ function generateHTML() {
         <a href="https://github.com/eggai-tech/ai-landscape" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
-        <a href="https://github.com/eggai-tech/ai-landscape" target="_blank" rel="noopener noreferrer">
-          Documentation
-        </a>
       </div>
     </div>
   </footer>
