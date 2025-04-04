@@ -145,7 +145,7 @@ main {
 }
 
 .page-title {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   text-align: left;
   font-size: 2rem;
   font-weight: 700;
@@ -154,7 +154,7 @@ main {
 
 .description {
   max-width: 800px;
-  margin: 0 0 3rem 0;
+  margin: 0 0 2rem 0;
   text-align: left;
   color: #4B5563;
   line-height: 1.6;
@@ -706,6 +706,15 @@ footer {
   }
   
   /* Content layout adjustments for mobile */
+  .page-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+  }
+  
+  .description {
+    margin: 0 0 1.5rem 0;
+    font-size: 0.95rem;
+  }
   .selector-container {
     margin-bottom: 0.75rem;
   }
