@@ -30,36 +30,16 @@
       <div class="filter-container">
         <div class="tag-filters">
   <button class="tag-filter active" data-category="all">All Categories</button>
-  <button class="tag-filter" data-category="infrastructure" style="border-color: #2F80ED;" title="Foundation compute, storage, and networking resources that everything runs on. Includes container orchestration, cloud resources, and infrastructure as code.
-
-Examples: Kubernetes, AKS/EKS/GKE, Terraform, Pulumi, NVIDIA GPU Operator, Ray Core">Infrastructure</button>
-  <button class="tag-filter" data-category="datalayer" style="border-color: #9B51E0;" title="Tools for data ingestion, processing, and storage. Includes data pipelines, streaming platforms, data lakes, and data warehouses.
-
-Examples: Apache Airflow, dbt, Kafka, Spark, Delta Lake, MinIO, BigQuery, Redshift, Snowflake">Data Layer</button>
-  <button class="tag-filter" data-category="featurestore" style="border-color: #F2994A;" title="Solutions for managing vector embeddings and structured ML features. Enables efficient storage, retrieval, and serving of both for powering AI applications.
-
-Examples: Feast, Tecton, pgvector, Milvus, Pinecone, Weaviate, Chroma, Redis">Vector & Feature Store</button>
-  <button class="tag-filter" data-category="modeldevelopment" style="border-color: #6FCF97;" title="Frameworks and tools for developing, training, and fine-tuning models. Includes ML frameworks, research environments, and foundation model APIs.
-
-Examples: PyTorch, TensorFlow, Hugging Face, Jupyter, SageMaker Studio, OpenAI API, Colab">Model Development</button>
-  <button class="tag-filter" data-category="mlops" style="border-color: #F2C94C;" title="Tools for operationalizing models through their lifecycle, including experiment tracking, CI/CD pipelines, model registry, versioning, and approval workflows.
-
-Examples: MLflow, Weights & Biases, Kubeflow, Argo Workflows, ZenML, DVC, ClearML">Model Lifecycle & MLOps</button>
-  <button class="tag-filter" data-category="modelserving" style="border-color: #EB5757;" title="Infrastructure for deploying and serving models in production with optimized performance. Supports real-time, batch, and streaming inference patterns.
-
-Examples: Triton Inference Server, vLLM, TorchServe, BentoML, Seldon Core, KServe, Ray Serve">Model Serving & Inference</button>
-  <button class="tag-filter" data-category="llmops" style="border-color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.
-
-Examples: LangChain, LlamaIndex, DSPy, LangGraph, Semantic Kernel, PromptLayer, Guardrails.ai">LLM Orchestration & Prompt Engineering</button>
-  <button class="tag-filter" data-category="applications" style="border-color: #BB6BD9;" title="Tools for building user-facing AI applications and APIs. Includes frontend frameworks, API development tools, and end-user interfaces.
-
-Examples: FastAPI, gRPC, Streamlit, Gradio, React, Next.js, LangServe, Semantic Kernel">Applications & Interfaces</button>
-  <button class="tag-filter" data-category="monitoring" style="border-color: #56CCF2;" title="Tools for monitoring and debugging AI systems in production. Includes metrics collection, logging, tracing, drift detection, and continuous evaluation.
-
-Examples: Prometheus, Grafana, Jaeger, Evidently, WhyLabs, Arize, TruLens, GreatExpectations">Monitoring & Observability</button>
-  <button class="tag-filter" data-category="security" style="border-color: #4C5364;" title="Solutions for securing AI systems and ensuring compliance with policies. Includes authentication, authorization, explainability, fairness, and auditability.
-
-Examples: Vault, Entra ID, AIX360, AIF360, Open Policy Agent, Model Card Toolkit">Security & Governance</button>
+  <button class="tag-filter" data-category="infrastructure" style="border-color: #2F80ED;" title="Foundation compute, storage, and networking resources that everything runs on. Includes container orchestration, cloud resources, and infrastructure as code.\n\nExamples: Kubernetes, AKS/EKS/GKE, Terraform, Pulumi, NVIDIA GPU Operator, Ray Core">Infrastructure</button>
+  <button class="tag-filter" data-category="datalayer" style="border-color: #9B51E0;" title="Tools for data ingestion, processing, and storage. Includes data pipelines, streaming platforms, data lakes, and data warehouses.\n\nExamples: Apache Airflow, dbt, Kafka, Spark, Delta Lake, MinIO, BigQuery, Redshift, Snowflake">Data Layer</button>
+  <button class="tag-filter" data-category="featurestore" style="border-color: #F2994A;" title="Solutions for managing vector embeddings and structured ML features. Enables efficient storage, retrieval, and serving of both for powering AI applications.\n\nExamples: Feast, Tecton, pgvector, Milvus, Pinecone, Weaviate, Chroma, Redis">Vector & Feature Store</button>
+  <button class="tag-filter" data-category="modeldevelopment" style="border-color: #6FCF97;" title="Frameworks and tools for developing, training, and fine-tuning models. Includes ML frameworks, research environments, and foundation model APIs.\n\nExamples: PyTorch, TensorFlow, Hugging Face, Jupyter, SageMaker Studio, OpenAI API, Colab">Model Development</button>
+  <button class="tag-filter" data-category="mlops" style="border-color: #F2C94C;" title="Tools for operationalizing models through their lifecycle, including experiment tracking, CI/CD pipelines, model registry, versioning, and approval workflows.\n\nExamples: MLflow, Weights & Biases, Kubeflow, Argo Workflows, ZenML, DVC, ClearML">Model Lifecycle & MLOps</button>
+  <button class="tag-filter" data-category="modelserving" style="border-color: #EB5757;" title="Infrastructure for deploying and serving models in production with optimized performance. Supports real-time, batch, and streaming inference patterns.\n\nExamples: Triton Inference Server, vLLM, TorchServe, BentoML, Seldon Core, KServe, Ray Serve">Model Serving & Inference</button>
+  <button class="tag-filter" data-category="llmops" style="border-color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.\n\nExamples: LangChain, LlamaIndex, DSPy, LangGraph, Semantic Kernel, PromptLayer, Guardrails.ai">LLM Orchestration & Prompt Engineering</button>
+  <button class="tag-filter" data-category="applications" style="border-color: #BB6BD9;" title="Tools for building user-facing AI applications and APIs. Includes frontend frameworks, API development tools, and end-user interfaces.\n\nExamples: FastAPI, gRPC, Streamlit, Gradio, React, Next.js, LangServe, Semantic Kernel">Applications & Interfaces</button>
+  <button class="tag-filter" data-category="monitoring" style="border-color: #56CCF2;" title="Tools for monitoring and debugging AI systems in production. Includes metrics collection, logging, tracing, drift detection, and continuous evaluation.\n\nExamples: Prometheus, Grafana, Jaeger, Evidently, WhyLabs, Arize, TruLens, GreatExpectations">Monitoring & Observability</button>
+  <button class="tag-filter" data-category="security" style="border-color: #4C5364;" title="Solutions for securing AI systems and ensuring compliance with policies. Includes authentication, authorization, explainability, fairness, and auditability.\n\nExamples: Vault, Entra ID, AIX360, AIF360, Open Policy Agent, Model Card Toolkit">Security & Governance</button>
 </div>
 
 
@@ -68,7 +48,7 @@ Examples: Vault, Entra ID, AIX360, AIF360, Open Policy Agent, Model Card Toolkit
             <input type="text" class="search-input" placeholder="Search technologies...">
           </div>
           <div class="count-indicator">
-            <span id="tech-count">194</span> technologies
+            <span id="tech-count">195</span> technologies
           </div>
         </div>
       </div>
@@ -6629,271 +6609,6 @@ Examples: Vault, Entra ID, AIX360, AIF360, Open Policy Agent, Model Card Toolkit
     </div>
   </div>
 </div>
-<div class="layer-container" data-layer="llmops">
-  <div class="layer-header" style="background-color: #FFAA00;">
-    <div class="layer-header-top">
-      <h2 class="layer-title">LLM Orchestration & Prompt Engineering</h2>
-      <span class="collapse-icon">▼</span>
-    </div>
-    <p class="layer-description">Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.</p>
-  </div>
-  <div class="layer-content collapsed">
-    <div class="category-tech-grid">
-      <!-- LangChain -->
-      <div class="tech-card" data-categories="llmops">
-        <div class="tech-header">
-          <div class="tech-meta">
-            <div class="tech-name">LangChain</div>
-            <div class="tech-description" title="A framework for building applications with large language models (LLMs) that provides components for retrieval augmented generation (RAG), agents, chains, memory systems, and tools integration. LangChain enables developers to create complex, stateful, and context-aware LLM applications.">Framework for developing applications powered by language models with integrated components for RAG, agents, and memory</div>
-          </div>
-          <div class="tech-logo">
-            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="4" fill="#13C296"/>
-    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
-  </svg>
-          </div>
-        </div>
-        <div class="tech-body">
-          <div class="tech-tags">
-            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
-          </div>
-          <div class="tech-links">
-            <a href="https://www.langchain.com" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
-              Website
-            </a>
-            <a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              GitHub
-            </a>
-            <a href="https://python.langchain.com/docs/get_started/introduction" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              Docs
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- LlamaIndex -->
-      <div class="tech-card" data-categories="llmops">
-        <div class="tech-header">
-          <div class="tech-meta">
-            <div class="tech-name">LlamaIndex</div>
-            <div class="tech-description" title="A data framework for building LLM applications over custom data sources, providing tools to ingest, structure, and access private or domain-specific data for retrieval-augmented generation (RAG). LlamaIndex handles data ingestion, chunking, embedding, and querying with features for semantic search and context-augmented generation.">Data framework for LLM applications to connect custom data sources to large language models</div>
-          </div>
-          <div class="tech-logo">
-            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="4" fill="#5D66F5"/>
-    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
-  </svg>
-          </div>
-        </div>
-        <div class="tech-body">
-          <div class="tech-tags">
-            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
-          </div>
-          <div class="tech-links">
-            <a href="https://www.llamaindex.ai" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
-              Website
-            </a>
-            <a href="https://github.com/jerryjliu/llama_index" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              GitHub
-            </a>
-            <a href="https://docs.llamaindex.ai/" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              Docs
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- AutoGen -->
-      <div class="tech-card" data-categories="llmops">
-        <div class="tech-header">
-          <div class="tech-meta">
-            <div class="tech-name">AutoGen</div>
-            <div class="tech-description" title="A framework for building applications using multiple agents that can converse with each other, solve tasks, and call functions to use tools. AutoGen agents can adapt to using different LLMs, have customizable persona and instructions, and have been used to build complex systems like co-development teams, research assistants, and more.">Framework for building multi-agent systems with LLMs that can work together to solve complex tasks</div>
-          </div>
-          <div class="tech-logo">
-            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="4" fill="#7F56D9"/>
-    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
-  </svg>
-          </div>
-        </div>
-        <div class="tech-body">
-          <div class="tech-tags">
-            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
-          </div>
-          <div class="tech-links">
-            <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
-              Website
-            </a>
-            <a href="https://github.com/microsoft/autogen" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              GitHub
-            </a>
-            <a href="https://microsoft.github.io/autogen/docs/getting-started" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              Docs
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- LangGraph -->
-      <div class="tech-card" data-categories="llmops">
-        <div class="tech-header">
-          <div class="tech-meta">
-            <div class="tech-name">LangGraph</div>
-            <div class="tech-description" title="A framework for creating stateful, multi-actor applications with language models, enabling complex, interactive LLM applications. LangGraph uses a graph-based paradigm to represent the flow of information between different components or agents, making it easier to build conversational agents, multi-step reasoning systems, and tools that require persistent state.">Framework for building stateful, multi-actor applications using language models</div>
-          </div>
-          <div class="tech-logo">
-            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="4" fill="#18CC42"/>
-    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
-  </svg>
-          </div>
-        </div>
-        <div class="tech-body">
-          <div class="tech-tags">
-            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
-          </div>
-          <div class="tech-links">
-            <a href="https://www.langchain.com/langgraph" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
-              Website
-            </a>
-            <a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              GitHub
-            </a>
-            <a href="https://python.langchain.com/docs/langgraph" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              Docs
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- DSPy -->
-      <div class="tech-card" data-categories="llmops">
-        <div class="tech-header">
-          <div class="tech-meta">
-            <div class="tech-name">DSPy</div>
-            <div class="tech-description" title="A framework for algorithmically programming language models by separating prompting logic from model calls. DSPy offers programmatic optimization of language model programs, enabling systematic improvement of LLM applications through techniques like fine-tuning prompts based on past results and tracing complex reasoning steps.">Framework for programming with language models through modules and optimizers</div>
-          </div>
-          <div class="tech-logo">
-            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="4" fill="#3872D9"/>
-    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
-  </svg>
-          </div>
-        </div>
-        <div class="tech-body">
-          <div class="tech-tags">
-            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
-          </div>
-          <div class="tech-links">
-            <a href="https://dspy.ai" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
-              Website
-            </a>
-            <a href="https://github.com/stanfordnlp/dspy" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              GitHub
-            </a>
-            <a href="https://dspy-docs.vercel.app" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              Docs
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- Semantic Kernel -->
-      <div class="tech-card" data-categories="llmops">
-        <div class="tech-header">
-          <div class="tech-meta">
-            <div class="tech-name">Semantic Kernel</div>
-            <div class="tech-description" title="An open-source SDK from Microsoft that integrates AI large language models with conventional programming languages. Semantic Kernel provides a framework for integrating prompts, semantic functions, connectors, and memory into applications, bridging AI and traditional programming paradigms.">SDK for integrating AI large language models with conventional programming languages</div>
-          </div>
-          <div class="tech-logo">
-            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="4" fill="#3F76E0"/>
-    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
-  </svg>
-          </div>
-        </div>
-        <div class="tech-body">
-          <div class="tech-tags">
-            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
-          </div>
-          <div class="tech-links">
-            <a href="https://learn.microsoft.com/en-us/semantic-kernel" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-              </svg>
-              Website
-            </a>
-            <a href="https://github.com/microsoft/semantic-kernel" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              GitHub
-            </a>
-            <a href="https://learn.microsoft.com/en-us/semantic-kernel/overview" target="_blank" rel="noopener noreferrer" class="tech-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              Docs
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="layer-container" data-layer="applications">
   <div class="layer-header" style="background-color: #BB6BD9;">
     <div class="layer-header-top">
@@ -6904,6 +6619,48 @@ Examples: Vault, Entra ID, AIX360, AIF360, Open Policy Agent, Model Card Toolkit
   </div>
   <div class="layer-content collapsed">
     <div class="category-tech-grid">
+      <!-- React -->
+      <div class="tech-card" data-categories="applications">
+        <div class="tech-header">
+          <div class="tech-meta">
+            <div class="tech-name">React</div>
+            <div class="tech-description" title="A JavaScript library for building user interfaces, developed and maintained by Facebook. React enables developers to build reusable UI components and manage state efficiently, making it ideal for creating interactive frontends for AI applications. Its component-based architecture and virtual DOM provide performance and maintainability benefits.">JavaScript library for building user interfaces with component-based architecture</div>
+          </div>
+          <div class="tech-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="4" fill="#61DAFB"/>
+    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
+  </svg>
+          </div>
+        </div>
+        <div class="tech-body">
+          <div class="tech-tags">
+            <span class="tech-tag applications" data-category="applications" style="background-color: #BB6BD920; color: #BB6BD9;" title="Tools for building user-facing AI applications and APIs. Includes frontend frameworks, API development tools, and end-user interfaces.">Applications & Interfaces</span>
+          </div>
+          <div class="tech-links">
+            <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              Website
+            </a>
+            <a href="https://github.com/facebook/react" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub
+            </a>
+            <a href="https://react.dev/learn" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Docs
+            </a>
+          </div>
+        </div>
+      </div>
       <!-- Streamlit -->
       <div class="tech-card" data-categories="applications">
         <div class="tech-header">
@@ -7483,6 +7240,271 @@ Examples: Vault, Entra ID, AIX360, AIF360, Open Policy Agent, Model Card Toolkit
               GitHub
             </a>
             <a href="https://docs.clarifai.com" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Docs
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="layer-container" data-layer="llmops">
+  <div class="layer-header" style="background-color: #FFAA00;">
+    <div class="layer-header-top">
+      <h2 class="layer-title">LLM Orchestration & Prompt Engineering</h2>
+      <span class="collapse-icon">▼</span>
+    </div>
+    <p class="layer-description">Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.</p>
+  </div>
+  <div class="layer-content collapsed">
+    <div class="category-tech-grid">
+      <!-- LangChain -->
+      <div class="tech-card" data-categories="llmops">
+        <div class="tech-header">
+          <div class="tech-meta">
+            <div class="tech-name">LangChain</div>
+            <div class="tech-description" title="A framework for building applications with large language models (LLMs) that provides components for retrieval augmented generation (RAG), agents, chains, memory systems, and tools integration. LangChain enables developers to create complex, stateful, and context-aware LLM applications.">Framework for developing applications powered by language models with integrated components for RAG, agents, and memory</div>
+          </div>
+          <div class="tech-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="4" fill="#13C296"/>
+    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
+  </svg>
+          </div>
+        </div>
+        <div class="tech-body">
+          <div class="tech-tags">
+            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
+          </div>
+          <div class="tech-links">
+            <a href="https://www.langchain.com" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              Website
+            </a>
+            <a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub
+            </a>
+            <a href="https://python.langchain.com/docs/get_started/introduction" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Docs
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- LlamaIndex -->
+      <div class="tech-card" data-categories="llmops">
+        <div class="tech-header">
+          <div class="tech-meta">
+            <div class="tech-name">LlamaIndex</div>
+            <div class="tech-description" title="A data framework for building LLM applications over custom data sources, providing tools to ingest, structure, and access private or domain-specific data for retrieval-augmented generation (RAG). LlamaIndex handles data ingestion, chunking, embedding, and querying with features for semantic search and context-augmented generation.">Data framework for LLM applications to connect custom data sources to large language models</div>
+          </div>
+          <div class="tech-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="4" fill="#5D66F5"/>
+    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
+  </svg>
+          </div>
+        </div>
+        <div class="tech-body">
+          <div class="tech-tags">
+            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
+          </div>
+          <div class="tech-links">
+            <a href="https://www.llamaindex.ai" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              Website
+            </a>
+            <a href="https://github.com/jerryjliu/llama_index" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub
+            </a>
+            <a href="https://docs.llamaindex.ai/" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Docs
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- AutoGen -->
+      <div class="tech-card" data-categories="llmops">
+        <div class="tech-header">
+          <div class="tech-meta">
+            <div class="tech-name">AutoGen</div>
+            <div class="tech-description" title="A framework for building applications using multiple agents that can converse with each other, solve tasks, and call functions to use tools. AutoGen agents can adapt to using different LLMs, have customizable persona and instructions, and have been used to build complex systems like co-development teams, research assistants, and more.">Framework for building multi-agent systems with LLMs that can work together to solve complex tasks</div>
+          </div>
+          <div class="tech-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="4" fill="#7F56D9"/>
+    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
+  </svg>
+          </div>
+        </div>
+        <div class="tech-body">
+          <div class="tech-tags">
+            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
+          </div>
+          <div class="tech-links">
+            <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              Website
+            </a>
+            <a href="https://github.com/microsoft/autogen" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub
+            </a>
+            <a href="https://microsoft.github.io/autogen/docs/getting-started" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Docs
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- LangGraph -->
+      <div class="tech-card" data-categories="llmops">
+        <div class="tech-header">
+          <div class="tech-meta">
+            <div class="tech-name">LangGraph</div>
+            <div class="tech-description" title="A framework for creating stateful, multi-actor applications with language models, enabling complex, interactive LLM applications. LangGraph uses a graph-based paradigm to represent the flow of information between different components or agents, making it easier to build conversational agents, multi-step reasoning systems, and tools that require persistent state.">Framework for building stateful, multi-actor applications using language models</div>
+          </div>
+          <div class="tech-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="4" fill="#18CC42"/>
+    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
+  </svg>
+          </div>
+        </div>
+        <div class="tech-body">
+          <div class="tech-tags">
+            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
+          </div>
+          <div class="tech-links">
+            <a href="https://www.langchain.com/langgraph" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              Website
+            </a>
+            <a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub
+            </a>
+            <a href="https://python.langchain.com/docs/langgraph" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Docs
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- DSPy -->
+      <div class="tech-card" data-categories="llmops">
+        <div class="tech-header">
+          <div class="tech-meta">
+            <div class="tech-name">DSPy</div>
+            <div class="tech-description" title="A framework for algorithmically programming language models by separating prompting logic from model calls. DSPy offers programmatic optimization of language model programs, enabling systematic improvement of LLM applications through techniques like fine-tuning prompts based on past results and tracing complex reasoning steps.">Framework for programming with language models through modules and optimizers</div>
+          </div>
+          <div class="tech-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="4" fill="#3872D9"/>
+    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
+  </svg>
+          </div>
+        </div>
+        <div class="tech-body">
+          <div class="tech-tags">
+            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
+          </div>
+          <div class="tech-links">
+            <a href="https://dspy.ai" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              Website
+            </a>
+            <a href="https://github.com/stanfordnlp/dspy" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub
+            </a>
+            <a href="https://dspy-docs.vercel.app" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Docs
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Semantic Kernel -->
+      <div class="tech-card" data-categories="llmops">
+        <div class="tech-header">
+          <div class="tech-meta">
+            <div class="tech-name">Semantic Kernel</div>
+            <div class="tech-description" title="An open-source SDK from Microsoft that integrates AI large language models with conventional programming languages. Semantic Kernel provides a framework for integrating prompts, semantic functions, connectors, and memory into applications, bridging AI and traditional programming paradigms.">SDK for integrating AI large language models with conventional programming languages</div>
+          </div>
+          <div class="tech-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="4" fill="#3F76E0"/>
+    <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
+  </svg>
+          </div>
+        </div>
+        <div class="tech-body">
+          <div class="tech-tags">
+            <span class="tech-tag llmops" data-category="llmops" style="background-color: #FFAA0020; color: #FFAA00;" title="Orchestrates LLM workflows, agents, prompts, and tools for retrieval-augmented generation (RAG) and multi-agent applications.">LLM Orchestration & Prompt Engineering</span>
+          </div>
+          <div class="tech-links">
+            <a href="https://learn.microsoft.com/en-us/semantic-kernel" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              Website
+            </a>
+            <a href="https://github.com/microsoft/semantic-kernel" target="_blank" rel="noopener noreferrer" class="tech-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub
+            </a>
+            <a href="https://learn.microsoft.com/en-us/semantic-kernel/overview" target="_blank" rel="noopener noreferrer" class="tech-link">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>

@@ -1,29 +1,88 @@
-// Build script to generate the AI landscape HTML page from JSON data
+/**
+ * Build the AI Landscape HTML directly from a CSV file
+ * This allows maintaining just the CSV file without needing the JSON
+ */
 const fs = require('fs');
 const path = require('path');
 
-// Read the landscape data
-const landscapeData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/landscape-data.json'), 'utf8'));
+// Load the category definitions from CSV
+const categoriesPath = path.join(__dirname, 'data', 'categories.csv');
+const categoriesContent = fs.readFileSync(categoriesPath, 'utf8');
+const categoriesRows = parseCSV(categoriesContent);
+const categoriesHeaders = categoriesRows.shift(); // First row contains headers
 
-// Function to generate a simple SVG logo based on color
+// Parse categories from CSV
+const categoriesData = categoriesRows.map(row => ({
+  id: row[0],
+  name: row[1],
+  description: row[2],
+  examples: row[3],
+  color: row[4]
+}));
+
+// Read the technologies CSV file
+const csvFilePath = path.join(__dirname, 'data', 'technologies.csv');
+const csvContent = fs.readFileSync(csvFilePath, 'utf8');
+
+// Parse CSV data
+const rows = parseCSV(csvContent);
+const headers = rows.shift(); // First row contains headers
+
+// Create technologies array
+const technologies = [];
+
+// Process each row
+rows.forEach(row => {
+  // Skip incomplete rows
+  if (row.length < 8) return;
+  
+  const technology = {
+    name: row[0],
+    description: row[1],
+    longDescription: row[2],
+    categories: row[3].split('|').map(cat => cat.trim()), // Convert pipe-separated categories back to array
+    logoColor: row[4],
+    links: {}
+  };
+  
+  // Add non-empty links
+  if (row[5]) technology.links.website = row[5];
+  if (row[6]) technology.links.github = row[6];
+  if (row[7]) technology.links.docs = row[7];
+  
+  // Add to technologies array
+  technologies.push(technology);
+});
+
+// Create the landscape data object
+const landscapeData = {
+  title: "AI Landscape",
+  description: "Navigate through the AI technology ecosystem to discover the tools that power modern AI systems. Filter by categories to explore building blocks for your AI projects.",
+  categories: categoriesData,
+  technologies: technologies
+};
+
+// Generate category filter buttons
+function generateCategoryButtons() {
+  let html = '<div class="tag-filters">\n';
+  
+  // All categories button
+  html += '  <button class="tag-filter active" data-category="all">All Categories</button>\n';
+  
+  landscapeData.categories.forEach(category => {
+    html += `  <button class="tag-filter" data-category="${category.id}" style="border-color: ${category.color};" title="${category.description}\\n\\nExamples: ${category.examples}">${category.name}</button>\n`;
+  });
+  
+  html += '</div>\n';
+  return html;
+}
+
+// Generate a simple icon SVG for the technology
 function generateLogoSvg(color) {
   return `<svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="32" height="32" rx="4" fill="${color}"/>
     <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
   </svg>`;
-}
-
-// Generate the category buttons HTML
-function generateCategoryButtons() {
-  let html = '<div class="tag-filters">\n';
-  html += '  <button class="tag-filter active" data-category="all">All Categories</button>\n';
-  
-  landscapeData.categories.forEach(category => {
-    html += `  <button class="tag-filter" data-category="${category.id}" style="border-color: ${category.color};" title="${category.description}\n\nExamples: ${category.examples}">${category.name}</button>\n`;
-  });
-  
-  html += '</div>\n';
-  return html;
 }
 
 // Generate technology card HTML with category grouping
@@ -61,18 +120,19 @@ function generateTechCards() {
     'modeldevelopment', 
     'mlops', 
     'modelserving', 
-    'llmops',
     'applications', 
+    'llmops', 
     'monitoring', 
     'security'
   ];
   
-  // Generate HTML for each category in order
-  categoryOrder.forEach(catId => {
-    const category = techsByCategory[catId];
-    if (!category || category.technologies.length === 0) return;
+  // Generate cards by category in the defined order
+  categoryOrder.forEach(categoryId => {
+    const category = techsByCategory[categoryId];
     
-    html += `<div class="layer-container" data-layer="${catId}">\n`;
+    if (!category) return; // Skip if category doesn't exist
+    
+    html += `<div class="layer-container" data-layer="${categoryId}">\n`;
     html += `  <div class="layer-header" style="background-color: ${category.color};">\n`;
     html += '    <div class="layer-header-top">\n';
     html += `      <h2 class="layer-title">${category.name}</h2>\n`;
@@ -394,6 +454,60 @@ function generateHTML() {
 </html>`;
 }
 
+// Helper function to parse CSV content
+function parseCSV(csvContent) {
+  const result = [];
+  let row = [];
+  let inquote = false;
+  let buffer = '';
+  
+  for (let i = 0; i < csvContent.length; i++) {
+    const char = csvContent[i];
+    
+    // Handle quotes
+    if (char === '"') {
+      if (i + 1 < csvContent.length && csvContent[i + 1] === '"') {
+        // Double quotes inside quoted field - add single quote
+        buffer += '"';
+        i++; // Skip the next character
+      } else {
+        // Toggle quote mode
+        inquote = !inquote;
+      }
+    } 
+    // Handle commas
+    else if (char === ',' && !inquote) {
+      row.push(buffer);
+      buffer = '';
+    } 
+    // Handle newlines
+    else if ((char === '\n' || char === '\r') && !inquote) {
+      // Skip if this is a blank line or part of CRLF
+      if (char === '\r' && i + 1 < csvContent.length && csvContent[i + 1] === '\n') {
+        continue;
+      }
+      if (buffer !== '' || row.length > 0) {
+        row.push(buffer);
+        result.push(row);
+        row = [];
+        buffer = '';
+      }
+    } 
+    // Add character to buffer
+    else {
+      buffer += char;
+    }
+  }
+  
+  // Add last remaining field and row if there's any
+  if (buffer !== '' || row.length > 0) {
+    row.push(buffer);
+    result.push(row);
+  }
+  
+  return result;
+}
+
 // Write the generated HTML to index.html
 fs.writeFileSync(path.join(__dirname, 'index.html'), generateHTML());
-console.log('AI Landscape HTML has been generated successfully!');
+console.log('AI Landscape HTML has been generated successfully from CSV data!');
