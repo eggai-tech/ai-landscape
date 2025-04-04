@@ -63,6 +63,8 @@ The landscape is maintained using CSV files for easy editing:
     - `script.js` - Main JavaScript functionality
     - `collapsible.js` - JavaScript for collapsible sections
     - `mobile-menu.js` - JavaScript for mobile navigation
+  - `html/` - Template HTML files
+    - `stack.html` - Stack visualization page template
 - `docs/` - Generated output directory for GitHub Pages (created by build script)
   - `index.html` - The main AI landscape visualization
   - `stack.html` - The stack visualization page
