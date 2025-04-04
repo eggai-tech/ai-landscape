@@ -872,14 +872,13 @@ function parseCSV(csvContent) {
   return result;
 }
 
-// Create dist directory if it doesn't exist
-const distDir = path.join(__dirname, 'dist');
-const cssDir = path.join(distDir, 'css');
-const jsDir = path.join(distDir, 'js');
-const dataDir = path.join(distDir, 'data');
+// Create docs directory for GitHub Pages if it doesn't exist
+const docsDir = path.join(__dirname, 'docs');
+const cssDir = path.join(docsDir, 'css');
+const jsDir = path.join(docsDir, 'js');
 
 // Ensure directories exist
-[distDir, cssDir, jsDir, dataDir].forEach(dir => {
+[docsDir, cssDir, jsDir].forEach(dir => {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
@@ -904,18 +903,12 @@ jsFilesToCopy.forEach(file => {
   }
 });
 
-// Copy data files
-fs.readdirSync(path.join(__dirname, 'data')).forEach(file => {
-  fs.copyFileSync(
-    path.join(__dirname, 'data', file),
-    path.join(dataDir, file)
-  );
-});
+// Data files are not needed in the docs folder as they're processed and embedded into the HTML
 
-// Write the generated HTML to dist/index.html
-fs.writeFileSync(path.join(distDir, 'index.html'), generateHTML());
+// Write the generated HTML to docs/index.html
+fs.writeFileSync(path.join(docsDir, 'index.html'), generateHTML());
 
-// Write the stack visualization page to dist/stack.html
-fs.writeFileSync(path.join(distDir, 'stack.html'), generateStackHTML());
+// Write the stack visualization page to docs/stack.html
+fs.writeFileSync(path.join(docsDir, 'stack.html'), generateStackHTML());
 
-console.log('AI Landscape HTML has been generated successfully!');
+console.log('AI Landscape HTML has been generated successfully for GitHub Pages!');

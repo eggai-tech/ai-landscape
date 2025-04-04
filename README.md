@@ -29,11 +29,11 @@ A static, interactive visualization of the AI technology ecosystem. This tool he
    node build.js
    ```
    
-   This will generate the site in the `dist` directory.
+   This will generate the site in the `docs` directory for GitHub Pages.
    
-   Then serve the dist directory:
+   Then serve the docs directory:
    ```bash
-   cd dist
+   cd docs
    python3 -m http.server 8000
    ```
    Then open `http://localhost:8000` in your browser
@@ -47,7 +47,7 @@ The landscape is maintained using CSV files for easy editing:
    ```bash
    node build.js
    ```
-3. The updated landscape will be generated in the `dist` directory
+3. The updated landscape will be generated in the `docs` directory for GitHub Pages
 
 ## Structure
 
@@ -62,12 +62,11 @@ The landscape is maintained using CSV files for easy editing:
   - `script.js` - Main JavaScript functionality
   - `collapsible.js` - JavaScript for collapsible sections
   - `mobile-menu.js` - JavaScript for mobile navigation
-- `dist/` - Generated output directory (created by build script)
+- `docs/` - Generated output directory for GitHub Pages (created by build script)
   - `index.html` - The main AI landscape visualization
   - `stack.html` - The stack visualization page
   - `css/` - Copied CSS files
   - `js/` - Copied JavaScript files
-  - `data/` - Copied data files
 
 ## Adding Technologies
 
@@ -131,12 +130,18 @@ This is a static site that can be deployed on any web server or hosting platform
    node build.js
    ```
 
-2. Copy the contents of the `dist` directory to your web server
-3. Ensure `index.html` and support files are accessible
+2. For GitHub Pages:
+   - Push the repository to GitHub
+   - Go to repository settings > Pages
+   - Select "Deploy from a branch" and choose "main" branch and "/docs" folder
+   - Click "Save"
+   - Wait for GitHub Pages to deploy your site
+
+3. For other web servers, copy the contents of the `docs` directory to your server
 
 For local testing, you can use Python's built-in HTTP server:
 ```bash
-cd dist
+cd docs
 python3 -m http.server 8000
 ```
 Then open `http://localhost:8000` in your browser.
