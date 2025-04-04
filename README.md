@@ -52,16 +52,17 @@ The landscape is maintained using CSV files for easy editing:
 ## Structure
 
 - `build.js` - Script to generate the HTML from CSV data
-- `data/` - Directory containing source data files
-  - `technologies.csv` - Primary data file with technology information
-  - `categories.csv` - Category definitions
-- `css/` - Directory containing source CSS files
-  - `styles.css` - Main CSS styles for the look & feel
-  - `collapsible.css` - CSS for collapsible sections
-- `js/` - Directory containing source JavaScript files
-  - `script.js` - Main JavaScript functionality
-  - `collapsible.js` - JavaScript for collapsible sections
-  - `mobile-menu.js` - JavaScript for mobile navigation
+- `src/` - Source code directory
+  - `data/` - Directory containing source data files
+    - `technologies.csv` - Primary data file with technology information
+    - `categories.csv` - Category definitions
+  - `css/` - Directory containing source CSS files
+    - `styles.css` - Main CSS styles for the look & feel
+    - `collapsible.css` - CSS for collapsible sections
+  - `js/` - Directory containing source JavaScript files
+    - `script.js` - Main JavaScript functionality
+    - `collapsible.js` - JavaScript for collapsible sections
+    - `mobile-menu.js` - JavaScript for mobile navigation
 - `docs/` - Generated output directory for GitHub Pages (created by build script)
   - `index.html` - The main AI landscape visualization
   - `stack.html` - The stack visualization page
@@ -72,7 +73,7 @@ The landscape is maintained using CSV files for easy editing:
 
 To add a new technology to the landscape:
 
-1. Open `data/technologies.csv` with a spreadsheet application
+1. Open `src/data/technologies.csv` with a spreadsheet application
 2. Add a new row with the following columns:
    - `name`: Technology name
    - `description`: Short description (appears on card)
@@ -86,11 +87,11 @@ To add a new technology to the landscape:
 
 ## Adding Categories
 
-Categories are defined in the `data/categories.csv` file.
+Categories are defined in the `src/data/categories.csv` file.
 
 To add a new category:
 
-1. Open `data/categories.csv` with a spreadsheet application
+1. Open `src/data/categories.csv` with a spreadsheet application
 2. Add a new row with the following columns:
    - `id`: Unique identifier for the category (e.g., "newcategory")
    - `name`: Display name for the category (e.g., "New Category")
@@ -103,7 +104,7 @@ To add a new category:
 
 The project uses two CSV files for easy maintenance:
 
-### Technologies CSV (`data/technologies.csv`)
+### Technologies CSV (`src/data/technologies.csv`)
 This is the main data file containing all the technologies:
 - `name`: The name of the technology
 - `description`: Short description that appears on the card
@@ -114,7 +115,7 @@ This is the main data file containing all the technologies:
 - `githubURL`: URL to the GitHub repository (optional)
 - `docsURL`: URL to the documentation (optional)
 
-### Categories CSV (`data/categories.csv`)
+### Categories CSV (`src/data/categories.csv`)
 - `id`: Unique identifier for the category (e.g., "infrastructure")
 - `name`: Display name for the category (e.g., "Infrastructure") 
 - `description`: Description of what belongs in this category

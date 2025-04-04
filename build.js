@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Load the category definitions from CSV
-const categoriesPath = path.join(__dirname, 'data', 'categories.csv');
+const categoriesPath = path.join(__dirname, 'src', 'data', 'categories.csv');
 const categoriesContent = fs.readFileSync(categoriesPath, 'utf8');
 const categoriesRows = parseCSV(categoriesContent);
 
@@ -16,7 +16,7 @@ const categoriesData = categoriesRows.map(row => ({
 }));
 
 // Read the technologies CSV file
-const csvFilePath = path.join(__dirname, 'data', 'technologies.csv');
+const csvFilePath = path.join(__dirname, 'src', 'data', 'technologies.csv');
 const csvContent = fs.readFileSync(csvFilePath, 'utf8');
 
 // Parse CSV data
@@ -885,9 +885,9 @@ const jsDir = path.join(docsDir, 'js');
 });
 
 // Copy CSS files
-fs.readdirSync(path.join(__dirname, 'css')).forEach(file => {
+fs.readdirSync(path.join(__dirname, 'src', 'css')).forEach(file => {
   fs.copyFileSync(
-    path.join(__dirname, 'css', file),
+    path.join(__dirname, 'src', 'css', file),
     path.join(cssDir, file)
   );
 });
@@ -895,9 +895,9 @@ fs.readdirSync(path.join(__dirname, 'css')).forEach(file => {
 // Copy only needed JS files
 const jsFilesToCopy = ['script.js', 'collapsible.js', 'mobile-menu.js'];
 jsFilesToCopy.forEach(file => {
-  if (fs.existsSync(path.join(__dirname, 'js', file))) {
+  if (fs.existsSync(path.join(__dirname, 'src', 'js', file))) {
     fs.copyFileSync(
-      path.join(__dirname, 'js', file),
+      path.join(__dirname, 'src', 'js', file),
       path.join(jsDir, file)
     );
   }
