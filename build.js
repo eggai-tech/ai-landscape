@@ -1,7 +1,3 @@
-/**
- * Build the AI Landscape HTML directly from a CSV file
- * This allows maintaining just the CSV file without needing the JSON
- */
 const fs = require('fs');
 const path = require('path');
 
@@ -9,7 +5,6 @@ const path = require('path');
 const categoriesPath = path.join(__dirname, 'data', 'categories.csv');
 const categoriesContent = fs.readFileSync(categoriesPath, 'utf8');
 const categoriesRows = parseCSV(categoriesContent);
-const categoriesHeaders = categoriesRows.shift(); // First row contains headers
 
 // Parse categories from CSV
 const categoriesData = categoriesRows.map(row => ({
@@ -26,7 +21,6 @@ const csvContent = fs.readFileSync(csvFilePath, 'utf8');
 
 // Parse CSV data
 const rows = parseCSV(csvContent);
-const headers = rows.shift(); // First row contains headers
 
 // Create technologies array
 const technologies = [];
@@ -57,7 +51,7 @@ rows.forEach(row => {
 // Create the landscape data object
 const landscapeData = {
   title: "AI Landscape",
-  description: "Navigate through the AI technology ecosystem to discover the tools that power modern AI systems. Filter by categories to explore building blocks for your AI projects.",
+  description: "Explore and filter AI technologies by category.",
   categories: categoriesData,
   technologies: technologies
 };
@@ -70,7 +64,15 @@ function generateCategoryButtons() {
   html += '  <button class="tag-filter active" data-category="all">All Categories</button>\n';
   
   landscapeData.categories.forEach(category => {
-    html += `  <button class="tag-filter" data-category="${category.id}" style="border-color: ${category.color};" title="${category.description}\\n\\nExamples: ${category.examples}">${category.name}</button>\n`;
+    // Skip if category is a placeholder or has missing required fields
+    if (!category.id || !category.name || category.id === "id") {
+      return;
+    }
+    
+    // Add context info from the visualization in parentheses for each category
+    let displayName = category.name;
+        
+    html += `  <button class="tag-filter" data-category="${category.id}" style="border-color: ${category.color};" title="${category.description}\\n\\nExamples: ${category.examples}">${displayName}</button>\n`;
   });
   
   html += '</div>\n';
@@ -83,6 +85,207 @@ function generateLogoSvg(color) {
     <rect width="32" height="32" rx="4" fill="${color}"/>
     <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="white"/>
   </svg>`;
+}
+
+// Generate stack visualization HTML for a dedicated page
+function generateStackHTML() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${landscapeData.title} - Technology Stack Visualization</title>
+  <meta name="description" content="Visual representation of the AI technology stack to understand how different components relate.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M12 0C5.374 0 0 5.373 0 12C0 17.302 3.438 21.8 8.207 23.387C8.806 23.498 9 23.126 9 22.81V20.576C5.662 21.302 4.967 19.16 4.967 19.16C4.421 17.773 3.634 17.404 3.634 17.404C2.545 16.659 3.717 16.675 3.717 16.675C4.922 16.759 5.556 17.912 5.556 17.912C6.626 19.746 8.363 19.216 9.048 18.909C9.155 18.134 9.466 17.604 9.81 17.305C7.145 17 4.343 15.971 4.343 11.374C4.343 10.063 4.812 8.993 5.579 8.153C5.455 7.85 5.044 6.629 5.696 4.977C5.696 4.977 6.704 4.655 8.997 6.207C9.954 5.941 10.98 5.808 12 5.803C13.02 5.808 14.047 5.941 15.006 6.207C17.297 4.655 18.303 4.977 18.303 4.977C18.956 6.63 18.545 7.851 18.421 8.153C19.191 8.993 19.656 10.064 19.656 11.374C19.656 15.983 16.849 16.998 14.177 17.295C14.607 17.667 15 18.397 15 19.517V22.81C15 23.129 15.192 23.504 15.801 23.386C20.566 21.797 24 17.3 24 12C24 5.373 18.627 0 12 0Z'/%3E%3C/svg%3E">
+  
+  <!-- Fonts and Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/collapsible.css">
+  
+  <!-- Mobile Menu Styles -->
+  <style>
+    /* Mobile burger menu in fixed position */
+    #direct-burger {
+      display: none;
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      background: rgba(31, 41, 55, 0.8);
+      z-index: 9999;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    
+    #direct-burger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 2px 0;
+      background-color: white;
+      border-radius: 2px;
+    }
+    
+    /* Only show on mobile */
+    @media (max-width: 768px) {
+      #direct-burger {
+        display: flex !important; /* Force display on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile burger menu - fixed position for easy access -->
+  <div id="direct-burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <header class="site-header">
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html">
+          <h1>${landscapeData.title}</h1>
+        </a>
+      </div>
+      <div class="burger-menu" id="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="main-nav" id="main-nav">
+        <a href="index.html">Technologies</a>
+        <a href="stack.html" class="active">Stack</a>
+        <a href="https://github.com/eggai-tech/ai-landscape" target="_blank" rel="noopener noreferrer">
+          <svg class="github-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.374 0 0 5.373 0 12C0 17.302 3.438 21.8 8.207 23.387C8.806 23.498 9 23.126 9 22.81V20.576C5.662 21.302 4.967 19.16 4.967 19.16C4.421 17.773 3.634 17.404 3.634 17.404C2.545 16.659 3.717 16.675 3.717 16.675C4.922 16.759 5.556 17.912 5.556 17.912C6.626 19.746 8.363 19.216 9.048 18.909C9.155 18.134 9.466 17.604 9.81 17.305C7.145 17 4.343 15.971 4.343 11.374C4.343 10.063 4.812 8.993 5.579 8.153C5.455 7.85 5.044 6.629 5.696 4.977C5.696 4.977 6.704 4.655 8.997 6.207C9.954 5.941 10.98 5.808 12 5.803C13.02 5.808 14.047 5.941 15.006 6.207C17.297 4.655 18.303 4.977 18.303 4.977C18.956 6.63 18.545 7.851 18.421 8.153C19.191 8.993 19.656 10.064 19.656 11.374C19.656 15.983 16.849 16.998 14.177 17.295C14.607 17.667 15 18.397 15 19.517V22.81C15 23.129 15.192 23.504 15.801 23.386C20.566 21.797 24 17.3 24 12C24 5.373 18.627 0 12 0Z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <h1 class="page-title">AI Technology Stack</h1>
+    <p class="description">
+      AI technologies by layer, from infrastructure to applications.
+    </p>
+    
+    <div class="stack-visualization">
+      <a href="index.html?category=applications" class="stack-layer-link">
+        <div class="stack-layer" style="border-left-color: #BB6BD9;">
+          <h3>Applications & Interfaces</h3>
+          <p>(UIs, APIs, Frontends, Copilots)</p>
+          <div class="stack-arrow"></div>
+        </div>
+      </a>
+      
+      <a href="index.html?category=llmops" class="stack-layer-link">
+        <div class="stack-layer" style="border-left-color: #FFAA00;">
+          <h3>LLM Orchestration & Prompt Engineering</h3>
+          <p>(RAG, Agents, Prompt Tools)</p>
+          <div class="stack-arrow"></div>
+        </div>
+      </a>
+      
+      <a href="index.html?category=modelserving" class="stack-layer-link">
+        <div class="stack-layer" style="border-left-color: #EB5757;">
+          <h3>Model Serving & Inference</h3>
+          <p>(Real-time, batch, streaming deployments)</p>
+          <div class="stack-arrow"></div>
+        </div>
+      </a>
+      
+      <a href="index.html?category=mlops" class="stack-layer-link">
+        <div class="stack-layer" style="border-left-color: #F2C94C;">
+          <h3>Model Lifecycle & MLOps</h3>
+          <p>(CI/CD, Tracking, Versioning, Registry)</p>
+          <div class="stack-arrow"></div>
+        </div>
+      </a>
+      
+      <a href="index.html?category=modeldevelopment" class="stack-layer-link">
+        <div class="stack-layer" style="border-left-color: #6FCF97;">
+          <h3>Model Development</h3>
+          <p>(Training, Fine-Tuning, Experimentation)</p>
+          <div class="stack-arrow"></div>
+        </div>
+      </a>
+      
+      <a href="index.html?category=featurestore" class="stack-layer-link">
+        <div class="stack-layer" style="border-left-color: #F2994A;">
+          <h3>Vector & Feature Store</h3>
+          <p>(Embeddings + ML Feature Management)</p>
+          <div class="stack-arrow"></div>
+        </div>
+      </a>
+      
+      <a href="index.html?category=datalayer" class="stack-layer-link">
+        <div class="stack-layer" style="border-left-color: #9B51E0;">
+          <h3>Data Layer</h3>
+          <p>(Ingestion, Pipelines, Storage)</p>
+          <div class="stack-arrow"></div>
+        </div>
+      </a>
+      
+      <a href="index.html?category=infrastructure" class="stack-layer-link">
+        <div class="stack-layer" style="border-left-color: #2F80ED;">
+          <h3>Infrastructure</h3>
+          <p>(Cloud, Kubernetes, IaC, Networking)</p>
+        </div>
+      </a>
+      
+      <p class="cross-cutting-title">Cross-cutting Concerns</p>
+      
+      <div class="cross-cutting-container">
+        <a href="index.html?category=monitoring" class="cross-cutting-link">
+          <div class="cross-cutting-layer" style="border-left-color: #56CCF2;">
+            <h3>Monitoring & Observability</h3>
+            <p>(Metrics, Logging, Tracing, Evaluation, Drift Detection)</p>
+          </div>
+        </a>
+        
+        <a href="index.html?category=security" class="cross-cutting-link">
+          <div class="cross-cutting-layer" style="border-left-color: #4C5364;">
+            <h3>Security & Governance</h3>
+            <p>(Auth, Compliance, Explainability, Fairness)</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="copyright">
+        © <span id="current-year"></span> EggAI Technologies
+      </div>
+      <div class="links">
+        <a href="https://github.com/eggai-tech/ai-landscape" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in the footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+  <script src="js/script.js"></script>
+  <script src="js/collapsible.js"></script>
+  <script src="js/mobile-menu.js"></script>
+</body>
+</html>`;
 }
 
 // Generate technology card HTML with category grouping
@@ -246,25 +449,80 @@ function generateHTML() {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/collapsible.css">
+  
+  <!-- Mobile Menu Styles -->
+  <style>
+    /* Mobile burger menu in fixed position */
+    #direct-burger {
+      display: none;
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      background: rgba(31, 41, 55, 0.8);
+      z-index: 9999;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    
+    #direct-burger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 2px 0;
+      background-color: white;
+      border-radius: 2px;
+    }
+    
+    /* Only show on mobile */
+    @media (max-width: 768px) {
+      #direct-burger {
+        display: flex !important; /* Force display on mobile */
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
+  <!-- Mobile burger menu - fixed position for easy access -->
+  <div id="direct-burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <header class="site-header">
     <div class="header-content">
       <div class="logo">
-        <h1>${landscapeData.title}</h1>
+        <a href="index.html">
+          <h1>${landscapeData.title}</h1>
+        </a>
       </div>
-      <a href="https://github.com/eggai-tech/ai-landscape" target="_blank" rel="noopener noreferrer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.374 0 0 5.373 0 12C0 17.302 3.438 21.8 8.207 23.387C8.806 23.498 9 23.126 9 22.81V20.576C5.662 21.302 4.967 19.16 4.967 19.16C4.421 17.773 3.634 17.404 3.634 17.404C2.545 16.659 3.717 16.675 3.717 16.675C4.922 16.759 5.556 17.912 5.556 17.912C6.626 19.746 8.363 19.216 9.048 18.909C9.155 18.134 9.466 17.604 9.81 17.305C7.145 17 4.343 15.971 4.343 11.374C4.343 10.063 4.812 8.993 5.579 8.153C5.455 7.85 5.044 6.629 5.696 4.977C5.696 4.977 6.704 4.655 8.997 6.207C9.954 5.941 10.98 5.808 12 5.803C13.02 5.808 14.047 5.941 15.006 6.207C17.297 4.655 18.303 4.977 18.303 4.977C18.956 6.63 18.545 7.851 18.421 8.153C19.191 8.993 19.656 10.064 19.656 11.374C19.656 15.983 16.849 16.998 14.177 17.295C14.607 17.667 15 18.397 15 19.517V22.81C15 23.129 15.192 23.504 15.801 23.386C20.566 21.797 24 17.3 24 12C24 5.373 18.627 0 12 0Z" fill="#333"/>
-        </svg>
-      </a>
+      <div class="burger-menu" id="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="main-nav" id="main-nav">
+        <a href="index.html" class="active">Technologies</a>
+        <a href="stack.html">Stack</a>
+        <a href="https://github.com/eggai-tech/ai-landscape" target="_blank" rel="noopener noreferrer">
+          <svg class="github-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.374 0 0 5.373 0 12C0 17.302 3.438 21.8 8.207 23.387C8.806 23.498 9 23.126 9 22.81V20.576C5.662 21.302 4.967 19.16 4.967 19.16C4.421 17.773 3.634 17.404 3.634 17.404C2.545 16.659 3.717 16.675 3.717 16.675C4.922 16.759 5.556 17.912 5.556 17.912C6.626 19.746 8.363 19.216 9.048 18.909C9.155 18.134 9.466 17.604 9.81 17.305C7.145 17 4.343 15.971 4.343 11.374C4.343 10.063 4.812 8.993 5.579 8.153C5.455 7.85 5.044 6.629 5.696 4.977C5.696 4.977 6.704 4.655 8.997 6.207C9.954 5.941 10.98 5.808 12 5.803C13.02 5.808 14.047 5.941 15.006 6.207C17.297 4.655 18.303 4.977 18.303 4.977C18.956 6.63 18.545 7.851 18.421 8.153C19.191 8.993 19.656 10.064 19.656 11.374C19.656 15.983 16.849 16.998 14.177 17.295C14.607 17.667 15 18.397 15 19.517V22.81C15 23.129 15.192 23.504 15.801 23.386C20.566 21.797 24 17.3 24 12C24 5.373 18.627 0 12 0Z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </header>
 
   <main>
+    <h1 class="page-title">AI Technologies</h1>
+    <p class="description">${landscapeData.description}</p>
+    
     <div class="selector-container">
-      <h2>Explore Building Blocks for Your AI Stack</h2>
-      <p>${landscapeData.description}</p>
       
       <div class="filter-container">
         ${generateCategoryButtons()}
@@ -288,7 +546,7 @@ function generateHTML() {
   <footer>
     <div class="footer-content">
       <div class="copyright">
-        © <span id="current-year"></span> EggAI Technologies. An open reference architecture.
+        © <span id="current-year"></span> EggAI Technologies
       </div>
       <div class="links">
         <a href="https://github.com/eggai-tech/ai-landscape" target="_blank" rel="noopener noreferrer">
@@ -300,10 +558,100 @@ function generateHTML() {
 
   <script src="js/script.js"></script>
   <script src="js/collapsible.js"></script>
+  <script src="js/mobile-menu.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Set current year in the footer
       document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Initialize variables needed for filtering
+      const tagFilters = document.querySelectorAll('.tag-filter');
+      const techTags = document.querySelectorAll('.tech-tag');
+      const layerContainers = document.querySelectorAll('.layer-container');
+      const techCards = document.querySelectorAll('.tech-card');
+      
+      // Define the filter function
+      function filterByCategory(category) {
+        console.log("Filtering by category:", category);
+        
+        // First hide ALL layer containers and cards
+        layerContainers.forEach(container => {
+          container.style.display = 'none';
+        });
+        
+        techCards.forEach(card => {
+          card.style.display = 'none';
+        });
+        
+        let visibleCount = 0;
+        
+        if (category === 'all') {
+          // Show all layers and cards for "All Categories"
+          layerContainers.forEach(container => {
+            container.style.display = 'block';
+          });
+          
+          techCards.forEach(card => {
+            card.style.display = 'flex';
+            visibleCount++;
+          });
+        } else {
+          // Only show the layer matching the category
+          const matchingLayer = document.querySelector('.layer-container[data-layer="' + category + '"]');
+          if (matchingLayer) {
+            matchingLayer.style.display = 'block';
+            
+            // Only show cards in this layer with matching category
+            const cardsInLayer = matchingLayer.querySelectorAll('.tech-card');
+            cardsInLayer.forEach(card => {
+              const cardCategories = card.getAttribute('data-categories').split(' ');
+              if (cardCategories.includes(category)) {
+                card.style.display = 'flex';
+                visibleCount++;
+              }
+            });
+          }
+        }
+        
+        // Update the count indicator
+        const techCountElement = document.getElementById('tech-count');
+        if (techCountElement) {
+          techCountElement.textContent = visibleCount;
+        }
+      }
+      
+      // Add click handlers to filter buttons
+      tagFilters.forEach(filter => {
+        filter.addEventListener('click', () => {
+          // Remove active class from all filters
+          tagFilters.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked filter
+          filter.classList.add('active');
+          
+          const category = filter.getAttribute('data-category');
+          filterByCategory(category);
+        });
+      });
+      
+      // Check URL parameters for category filtering
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryParam = urlParams.get('category');
+      
+      if (categoryParam) {
+        // Find the filter button that matches the category parameter
+        const matchingFilter = document.querySelector('.tag-filter[data-category="' + categoryParam + '"]');
+        if (matchingFilter) {
+          // Remove active class from all filters
+          tagFilters.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to matching filter
+          matchingFilter.classList.add('active');
+          
+          // Trigger the filtering function
+          filterByCategory(categoryParam);
+        }
+      }
 
       // Handle the collapsible sections
       const layerHeaders = document.querySelectorAll('.layer-header');
@@ -333,11 +681,7 @@ function generateHTML() {
         content.style.display = 'block';
       });
       
-      // Category filtering
-      const tagFilters = document.querySelectorAll('.tag-filter');
-      const techTags = document.querySelectorAll('.tech-tag');
-      const layerContainers = document.querySelectorAll('.layer-container');
-      const techCards = document.querySelectorAll('.tech-card');
+      // Category filtering - Using the variables defined above
       
       // Custom filter function to show only one category
       function filterByCategory(category) {
@@ -528,6 +872,50 @@ function parseCSV(csvContent) {
   return result;
 }
 
-// Write the generated HTML to index.html
-fs.writeFileSync(path.join(__dirname, 'index.html'), generateHTML());
-console.log('AI Landscape HTML has been generated successfully from CSV data!');
+// Create dist directory if it doesn't exist
+const distDir = path.join(__dirname, 'dist');
+const cssDir = path.join(distDir, 'css');
+const jsDir = path.join(distDir, 'js');
+const dataDir = path.join(distDir, 'data');
+
+// Ensure directories exist
+[distDir, cssDir, jsDir, dataDir].forEach(dir => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+});
+
+// Copy CSS files
+fs.readdirSync(path.join(__dirname, 'css')).forEach(file => {
+  fs.copyFileSync(
+    path.join(__dirname, 'css', file),
+    path.join(cssDir, file)
+  );
+});
+
+// Copy only needed JS files
+const jsFilesToCopy = ['script.js', 'collapsible.js', 'mobile-menu.js'];
+jsFilesToCopy.forEach(file => {
+  if (fs.existsSync(path.join(__dirname, 'js', file))) {
+    fs.copyFileSync(
+      path.join(__dirname, 'js', file),
+      path.join(jsDir, file)
+    );
+  }
+});
+
+// Copy data files
+fs.readdirSync(path.join(__dirname, 'data')).forEach(file => {
+  fs.copyFileSync(
+    path.join(__dirname, 'data', file),
+    path.join(dataDir, file)
+  );
+});
+
+// Write the generated HTML to dist/index.html
+fs.writeFileSync(path.join(distDir, 'index.html'), generateHTML());
+
+// Write the stack visualization page to dist/stack.html
+fs.writeFileSync(path.join(distDir, 'stack.html'), generateStackHTML());
+
+console.log('AI Landscape HTML has been generated successfully!');

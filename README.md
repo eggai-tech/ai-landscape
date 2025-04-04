@@ -24,13 +24,19 @@ A static, interactive visualization of the AI technology ecosystem. This tool he
    cd ai-landscape
    ```
 
-2. View the landscape:
-   - Option 1: Open `index.html` directly in any modern web browser
-   - Option 2: Serve the directory with Python's built-in HTTP server:
-     ```bash
-     python3 -m http.server 8000
-     ```
-     Then open `http://localhost:8000` in your browser
+2. Build and view the landscape:
+   ```bash
+   node build.js
+   ```
+   
+   This will generate the site in the `dist` directory.
+   
+   Then serve the dist directory:
+   ```bash
+   cd dist
+   python3 -m http.server 8000
+   ```
+   Then open `http://localhost:8000` in your browser
 
 ### Updating the Landscape
 
@@ -41,22 +47,27 @@ The landscape is maintained using CSV files for easy editing:
    ```bash
    node build.js
    ```
-3. The updated landscape will be generated as `index.html`
+3. The updated landscape will be generated in the `dist` directory
 
 ## Structure
 
-- `index.html` - The main AI landscape visualization (generated)
 - `build.js` - Script to generate the HTML from CSV data
-- `data/` - Directory containing data files
+- `data/` - Directory containing source data files
   - `technologies.csv` - Primary data file with technology information
   - `categories.csv` - Category definitions
-- `css/` - Directory containing CSS files
+- `css/` - Directory containing source CSS files
   - `styles.css` - Main CSS styles for the look & feel
   - `collapsible.css` - CSS for collapsible sections
-- `js/` - Directory containing JavaScript files
+- `js/` - Directory containing source JavaScript files
   - `script.js` - Main JavaScript functionality
   - `collapsible.js` - JavaScript for collapsible sections
-- `assets/` - Directory for images, icons, and other static assets
+  - `mobile-menu.js` - JavaScript for mobile navigation
+- `dist/` - Generated output directory (created by build script)
+  - `index.html` - The main AI landscape visualization
+  - `stack.html` - The stack visualization page
+  - `css/` - Copied CSS files
+  - `js/` - Copied JavaScript files
+  - `data/` - Copied data files
 
 ## Adding Technologies
 
@@ -115,11 +126,17 @@ This is the main data file containing all the technologies:
 
 This is a static site that can be deployed on any web server or hosting platform:
 
-1. Copy all files to your web server
-2. Ensure `index.html` and support files are accessible
+1. Build the site:
+   ```bash
+   node build.js
+   ```
+
+2. Copy the contents of the `dist` directory to your web server
+3. Ensure `index.html` and support files are accessible
 
 For local testing, you can use Python's built-in HTTP server:
 ```bash
+cd dist
 python3 -m http.server 8000
 ```
 Then open `http://localhost:8000` in your browser.
